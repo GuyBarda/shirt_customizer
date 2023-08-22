@@ -13,6 +13,7 @@ import {
     ColorPicker,
     CustomButton,
     FilePicker,
+    SizePicker,
     Tab,
 } from '../components';
 
@@ -35,6 +36,8 @@ const Customizer = () => {
         switch (activeEditorTab) {
             case 'colorpicker':
                 return <ColorPicker />;
+            case 'sizepicker':
+                return <SizePicker />;
             case 'filepicker':
                 return (
                     <FilePicker
@@ -71,11 +74,7 @@ const Customizer = () => {
                 body: JSON.stringify({ prompt }),
             });
 
-            console.log('response', response);
-
             const data = await response.json();
-            console.log('data', data);
-
             handleDecals(type, `data:image/png;base64,${data.photo}`);
         } catch (error) {
             alert(error);
@@ -87,12 +86,10 @@ const Customizer = () => {
 
     const handleDecals = (type, result) => {
         const decalType = DecalTypes[type];
-
         state[decalType.stateProperty] = result;
 
-        if (!activeFilterTab[decalType.filterTab]) {
+        if (!activeFilterTab[decalType.filterTab])
             handleActiveFilterTab(decalType.filterTab);
-        }
     };
 
     const handleActiveFilterTab = (tabName) => {
@@ -115,11 +112,13 @@ const Customizer = () => {
         }));
     };
 
-    const readFile = (type) => {
-        reader(file).then((result) => {
-            handleDecals(type, result);
-            setActiveEditorTab('');
-        });
+    const readFile = async (type) => {
+        if (!file) return alert('Please provide a file');
+        if (!file.type.includes('image'))
+            return alert('Please provide an image');
+        const res = await reader(file);
+        handleDecals(type, res);
+        setActiveEditorTab('');
     };
 
     return (
@@ -175,6 +174,16 @@ const Customizer = () => {
                                 }
                             />
                         ))}
+                        <button
+                            className="download-btn"
+                            onClick={downloadCanvasToImage}
+                        >
+                            <img
+                                src={download}
+                                alt="download"
+                                className="w-3/5 h-3/5 object-contain"
+                            />
+                        </button>
                     </motion.div>
                 </>
             )}

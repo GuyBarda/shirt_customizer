@@ -7,6 +7,7 @@ function Tab({ tab, isFilterTab, isActiveTab, handleClick }) {
         isFilterTab && isActiveTab
             ? { backgroundColor: snap.color, opacity: 0.5 }
             : { backgroundColor: 'transparent', opacity: 1 };
+
     return (
         <div
             key={tab.name}

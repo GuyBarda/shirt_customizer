@@ -1,13 +1,14 @@
-import state from '../store';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSnapshot } from 'valtio';
+
+import state from '../store';
+import { CustomButton } from '../components';
 import {
     headContainerAnimation,
     headContentAnimation,
     headTextAnimation,
     slideAnimation,
 } from '../config/motion';
-import { CustomButton } from '../components';
 
 const Home = () => {
     const snap = useSnapshot(state);
@@ -15,7 +16,7 @@ const Home = () => {
     return (
         <AnimatePresence>
             {snap.intro && (
-                <motion.section className="Home" {...slideAnimation('left')}>
+                <motion.section className="home" {...slideAnimation('left')}>
                     <motion.header {...slideAnimation('down')}>
                         <img
                             src="./threejs.png"
@@ -23,13 +24,14 @@ const Home = () => {
                             className="w-8 h-8 object-contain"
                         />
                     </motion.header>
+
                     <motion.div
                         className="home-content"
                         {...headContainerAnimation}
                     >
                         <motion.div {...headTextAnimation}>
                             <h1 className="head-text">
-                                LET'S <br className="xl:block hidden" /> DO IT
+                                LET'S <br className="xl:block hidden" /> DO IT.
                             </h1>
                         </motion.div>
                         <motion.div

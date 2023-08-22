@@ -4,7 +4,6 @@ import { useFrame } from '@react-three/fiber';
 import { Decal, useGLTF, useTexture } from '@react-three/drei';
 
 import state from '../store';
-import { useEffect } from 'react';
 
 function Shirt() {
     const snap = useSnapshot(state);
@@ -12,10 +11,6 @@ function Shirt() {
 
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
-
-    // useEffect(() => {
-    //     console.log(nodes, materials);
-    // });
 
     useFrame((state, delta) =>
         easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
@@ -42,9 +37,9 @@ function Shirt() {
                 )}
                 {snap.isLogoTexture && (
                     <Decal
-                        position={[0, 0.04, 0.15]}
+                        position={[snap.positionX, snap.positionY, 0.1]}
                         rotation={[0, 0, 0]}
-                        scale={0.15}
+                        scale={snap.size}
                         map={logoTexture}
                         // map-anisotropy={16}
                         depthTest={false}
