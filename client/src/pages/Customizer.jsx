@@ -1,37 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSnapshot } from 'valtio';
 
-import config from '../config/config';
+// import config from '../config/config';
 import state from '../store';
 import { download } from '../assets';
 import { downloadCanvasToImage, reader } from '../config/helpers';
 import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
-import {
-    AIPicker,
-    ColorPicker,
-    CustomButton,
-    FilePicker,
-    SizePicker,
-    Tab,
-} from '../components';
+
+import AIPicker from '../components/AIPicker';
+import ColorPicker from '../components/ColorPicker';
+import CustomButton from '../components/CustomButton';
+import FilePicker from '../components/FilePicker';
+import SizePicker from '../components/SizePicker';
+import Tab from '../components/Tab';
 
 const Customizer = () => {
     const snap = useSnapshot(state);
 
     const [file, setFile] = useState('');
-
     const [prompt, setPrompt] = useState('');
     const [generatingImg, setGeneratingImg] = useState(false);
-
     const [activeEditorTab, setActiveEditorTab] = useState('');
     const [activeFilterTab, setActiveFilterTab] = useState({
         logoShirt: true,
         stylishShirt: false,
     });
 
-    // show tab content depending on the activeTab
     const generateTabContent = () => {
         switch (activeEditorTab) {
             case 'colorpicker':
@@ -61,6 +57,7 @@ const Customizer = () => {
     };
 
     const handleSubmit = async (type) => {
+        if (true) alert('Currently under development, please be patient');
         if (!prompt) return alert('Please enter a prompt');
 
         try {
@@ -164,15 +161,20 @@ const Customizer = () => {
                         {...slideAnimation('up')}
                     >
                         {FilterTabs.map((tab) => (
-                            <Tab
-                                key={tab.name}
-                                tab={tab}
-                                isFilterTab
-                                isActiveTab={activeFilterTab[tab.name]}
-                                handleClick={() =>
-                                    handleActiveFilterTab(tab.name)
-                                }
-                            />
+                            <div className="relative">
+                                <Tab
+                                    key={tab.name}
+                                    tab={tab}
+                                    isFilterTab
+                                    isActiveTab={activeFilterTab[tab.name]}
+                                    handleClick={() =>
+                                        handleActiveFilterTab(tab.name)
+                                    }
+                                />
+                                <div className="filtertabs-floater">
+                                    Toggle the logo of the shirt
+                                </div>
+                            </div>
                         ))}
                         <button
                             className="download-btn"
