@@ -5,6 +5,7 @@ function FilePicker({ file, setFile, readFile }) {
         { type: 'outline', title: 'Logo' },
         { type: 'filled', title: 'Full' },
     ];
+
     return (
         <div className="filepicker-container">
             <div className="flex-1 flex flex-col">
@@ -25,7 +26,7 @@ function FilePicker({ file, setFile, readFile }) {
                     {!file ? 'No file selected' : file.name}
                 </p>
 
-                <div className="mt-4 flex gap-3">
+                <div className="mt-auto flex gap-3">
                     {buttons.map(({ type, title }) => (
                         <CustomButton
                             key={type}

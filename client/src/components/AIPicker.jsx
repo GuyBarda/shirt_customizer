@@ -3,6 +3,11 @@ import React from 'react';
 import CustomButton from './CustomButton';
 
 const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
+    const buttons = [
+        { type: 'outline', title: 'AI Logo' },
+        { type: 'filled', title: 'AI Full' },
+    ];
+
     return (
         <div className="aipicker-container">
             <textarea
@@ -21,19 +26,19 @@ const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
                     />
                 ) : (
                     <>
-                        <CustomButton
-                            type="outline"
-                            title="AI Logo"
-                            handleClick={() => handleSubmit('logo')}
-                            customStyles="text-xs"
-                        />
-
-                        <CustomButton
-                            type="filled"
-                            title="AI Full"
-                            handleClick={() => handleSubmit('full')}
-                            customStyles="text-xs"
-                        />
+                        {buttons.map(({ type, title }) => (
+                            <CustomButton
+                                key={type}
+                                type={type}
+                                title={title}
+                                handleClick={() =>
+                                    handleSubmit(
+                                        title.split(' ')[1].toLocaleLowerCase()
+                                    )
+                                }
+                                customStyles="text-sm font-bold"
+                            />
+                        ))}
                     </>
                 )}
             </div>
