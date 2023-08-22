@@ -6,7 +6,7 @@ const html = `<!DOCTYPE html>
     align-items: center;
     flex-direction: column'>
     
-<h1>Customise Shirt API</h1>
+<h1>Customize Shirt API</h1>
 
 <p>Just use the different routes plz.</p>
 
