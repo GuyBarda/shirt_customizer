@@ -54,16 +54,6 @@ html {
 .filepicker-container {
     @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
 }
-
-.filtertabs-floater {
-    @apply absolute right-1/2 mt-3 glassmorphism p-3 rounded-md opacity-0 transition;
-    bottom: 120%;
-}
-
-.filtertabs-floater {
-    @apply opacity-100;
-}
-
 .sizepicker-container {
     @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
 }

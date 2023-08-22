@@ -41,6 +41,7 @@ function Shirt() {
                         rotation={[0, 0, 0]}
                         scale={snap.size}
                         map={logoTexture}
+                        // map-anisotropy={16}
                         depthTest={false}
                         depthWrite={true}
                     />

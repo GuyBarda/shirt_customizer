@@ -2,7 +2,7 @@ import { useSnapshot } from 'valtio';
 import state from '../store';
 import CustomButton from './CustomButton';
 
-function SizePicker() {
+function SizePicker({ handleSubmit }) {
     const snap = useSnapshot(state);
 
     const handleChange = (type, value) => {
@@ -24,7 +24,7 @@ function SizePicker() {
                 max="25"
                 value={snap.size * 100}
             />
-            <label>Horizontal Position</label>
+            <label>X-Axis</label>
             <input
                 type="range"
                 onChange={({ target }) =>
@@ -34,7 +34,7 @@ function SizePicker() {
                 max="10"
                 value={snap.positionX * 100}
             />
-            <label>Vertical Position</label>
+            <label>Up Down</label>
             <input
                 type="range"
                 onChange={({ target }) =>
@@ -48,7 +48,7 @@ function SizePicker() {
                 type="filled"
                 title="Default"
                 handleClick={restoreToDefault}
-                customStyles="text-sm font-bold mt-auto"
+                customStyles="text-sm font-bold"
             />
         </div>
     );

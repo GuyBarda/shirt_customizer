@@ -5,9 +5,6 @@ function FilePicker({ file, setFile, readFile }) {
         { type: 'outline', title: 'Logo' },
         { type: 'filled', title: 'Full' },
     ];
-
-    const getFileName = () => (!file ? 'No file selected' : file.name);
-
     return (
         <div className="filepicker-container">
             <div className="flex-1 flex flex-col">
@@ -15,23 +12,20 @@ function FilePicker({ file, setFile, readFile }) {
                     type="file"
                     id="file-upload"
                     accept="image/*"
-                    onChange={({ target }) => setFile(target.files[0])}
+                    onChange={(e) => setFile(e.target.files[0])}
                 />
                 <label
                     htmlFor="file-upload"
-                    className="filepicker-input cursor-pointer underline"
+                    className="filepicker-input cursor-pointer underline "
                 >
                     Upload File
                 </label>
 
-                <p
-                    className="mt-2 text-white text-sm truncate"
-                    title={getFileName()}
-                >
-                    {getFileName()}
+                <p className="mt-2 text-white text-sm truncate">
+                    {!file ? 'No file selected' : file.name}
                 </p>
 
-                <div className="mt-auto flex gap-3">
+                <div className="mt-4 flex gap-3">
                     {buttons.map(({ type, title }) => (
                         <CustomButton
                             key={type}
@@ -43,6 +37,18 @@ function FilePicker({ file, setFile, readFile }) {
                             customStyles="text-sm font-bold"
                         />
                     ))}
+                    {/* <CustomButton
+                        type="outline"
+                        title="Logo"
+                        handleClick={() => readFile('logo')}
+                        customStyles="text-sm"
+                    />
+                    <CustomButton
+                        type="filled"
+                        title="Full"
+                        handleClick={() => readFile('full')}
+                        customStyles="text-sm"
+                    /> */}
                 </div>
             </div>
         </div>
