@@ -133,7 +133,11 @@ const Customizer = () => {
                                         key={tab.name}
                                         tab={tab}
                                         handleClick={() =>
-                                            setActiveEditorTab(tab.name)
+                                            setActiveEditorTab(
+                                                activeEditorTab === tab.name
+                                                    ? ''
+                                                    : tab.name
+                                            )
                                         }
                                     />
                                 ))}
@@ -170,12 +174,13 @@ const Customizer = () => {
                                         handleActiveFilterTab(tab.name)
                                     }
                                 />
-                                <motion.div
-                                    className="filtertabs-floater"
-                                    {...slideAnimation('up')}
-                                >
-                                    Toggle the logo of the shirt
-                                </motion.div>
+                                <div className="filtertabs-floater">
+                                    Toggle the{' '}
+                                    {tab.name.includes('logo')
+                                        ? 'logo'
+                                        : 'background'}{' '}
+                                    of the shirt
+                                </div>
                             </div>
                         ))}
                         <button

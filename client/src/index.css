@@ -49,9 +49,8 @@ html {
 
 .filtertabs-floater {
     @apply absolute glassmorphism p-3 rounded-md;
-    width: 250px;
-    /* top: -150%; */
-    left: -150%;
+    left: -450%;
+    transform: translateX(50%);
     visibility: hidden;
     bottom: 120%;
 }
