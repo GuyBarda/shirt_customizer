@@ -48,15 +48,13 @@ html {
 }
 
 .filtertabs-floater {
-    @apply absolute glassmorphism p-3 rounded-md;
-    left: -450%;
-    transform: translateX(50%);
+    @apply absolute glassmorphism p-3 rounded-md opacity-0 transition-all;
     visibility: hidden;
     bottom: 120%;
 }
 
 .floater-container:hover .filtertabs-floater {
-    visibility: visible;
+    @apply visible opacity-100;
 }
 
 .aipicker-textarea {

@@ -164,7 +164,7 @@ const Customizer = () => {
                         {...slideAnimation('up')}
                     >
                         {FilterTabs.map((tab) => (
-                            <div className="floater-container relative">
+                            <div className="floater-container flex justify-center">
                                 <Tab
                                     key={tab.name}
                                     tab={tab}
