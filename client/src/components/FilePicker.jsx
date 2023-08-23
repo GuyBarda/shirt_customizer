@@ -38,18 +38,6 @@ function FilePicker({ file, setFile, readFile }) {
                             customStyles="text-sm font-bold"
                         />
                     ))}
-                    {/* <CustomButton
-                        type="outline"
-                        title="Logo"
-                        handleClick={() => readFile('logo')}
-                        customStyles="text-sm"
-                    />
-                    <CustomButton
-                        type="filled"
-                        title="Full"
-                        handleClick={() => readFile('full')}
-                        customStyles="text-sm"
-                    /> */}
                 </div>
             </div>
         </div>

@@ -160,7 +160,7 @@ const Customizer = () => {
                         {...slideAnimation('up')}
                     >
                         {FilterTabs.map((tab) => (
-                            <div className="relative">
+                            <div className="floater-container relative">
                                 <Tab
                                     key={tab.name}
                                     tab={tab}
@@ -170,9 +170,12 @@ const Customizer = () => {
                                         handleActiveFilterTab(tab.name)
                                     }
                                 />
-                                <div className="filtertabs-floater">
+                                <motion.div
+                                    className="filtertabs-floater"
+                                    {...slideAnimation('up')}
+                                >
                                     Toggle the logo of the shirt
-                                </div>
+                                </motion.div>
                             </div>
                         ))}
                         <button

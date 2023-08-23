@@ -1,8 +1,8 @@
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { useSnapshot } from 'valtio';
-import state from '../store';
 import { useRef } from 'react';
+import state from '../store';
 
 const CameraRig = ({ children }) => {
     const group = useRef();
@@ -18,8 +18,6 @@ const CameraRig = ({ children }) => {
             if (isBreakpoint) targetPosition = [0, 0, 2];
             if (isMobile) targetPosition = [0, 0.2, 2.5];
         } else {
-            // if (isMobile) targetPosition = [0, 0.2, 2.5];
-            // else targetPosition = [0, 0, 2];
             targetPosition = isMobile ? [0, 0.2, 2.5] : [0, 0, 2];
         }
 

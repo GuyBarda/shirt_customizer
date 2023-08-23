@@ -9,7 +9,7 @@ function ColorPicker() {
             <SketchPicker
                 color={snap.color}
                 disableAlpha
-                onChange={(color) => (state.color = color.hex)}
+                onChange={({ hex }) => (state.color = hex)}
             />
         </div>
     );
