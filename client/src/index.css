@@ -101,5 +101,11 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .sketch-picker > div:nth-child(3) {
-    display: none !important;
+    @apply !hidden;
+}
+.sketch-picker > div:nth-child(1) {
+    @apply rounded;
+}
+.sketch-picker > div:nth-child(2) {
+    @apply my-2;
 }
