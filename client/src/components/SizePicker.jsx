@@ -14,42 +14,49 @@ function SizePicker() {
         state.positionX = 0;
         state.positionY = 0;
     };
+
     return (
         <div className="sizepicker-container">
-            <label>Logo Size</label>
-            <input
-                type="range"
-                onChange={({ target }) => handleChange('size', target.value)}
-                min="5"
-                max="25"
-                value={snap.size * 100}
-            />
-            <label>Horizontal Position</label>
-            <input
-                type="range"
-                onChange={({ target }) =>
-                    handleChange('positionX', target.value)
-                }
-                min="-10"
-                max="10"
-                value={snap.positionX * 100}
-            />
-            <label>Vertical Position</label>
-            <input
-                type="range"
-                onChange={({ target }) =>
-                    handleChange('positionY', target.value)
-                }
-                min="-30"
-                max="15"
-                value={snap.positionY * 100}
-            />
-            <CustomButton
-                type="filled"
-                title="Default"
-                handleClick={restoreToDefault}
-                customStyles="text-sm font-bold"
-            />
+            <div className="flex-1 flex flex-col gap-[6px]">
+                <label className="text-sm">Logo Size</label>
+                <input
+                    type="range"
+                    onChange={({ target }) =>
+                        handleChange('size', target.value)
+                    }
+                    min="5"
+                    max="25"
+                    value={snap.size * 100}
+                />
+                <label className="text-sm">Horizontal Position</label>
+                <input
+                    type="range"
+                    onChange={({ target }) =>
+                        handleChange('positionX', target.value)
+                    }
+                    min="-10"
+                    max="10"
+                    value={snap.positionX * 100}
+                />
+                <label className="text-sm">Vertical Position</label>
+                <input
+                    type="range"
+                    onChange={({ target }) =>
+                        handleChange('positionY', target.value)
+                    }
+                    min="-30"
+                    max="15"
+                    value={snap.positionY * 100}
+                />
+                <div className="mt-auto ">
+                    <CustomButton
+                        type="filled"
+                        title="Default"
+                        handleClick={restoreToDefault}
+                        customStyles="text-sm font-bold ml-[50%] translate-x-[-50%]"
+                    />
+                </div>
+            </div>
         </div>
     );
 }

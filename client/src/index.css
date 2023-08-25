@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,900&display=swap'); */
 @import url('https://rsms.me/inter/inter.css');
 
 @tailwind base;
@@ -13,10 +13,6 @@ html {
     html {
         font-family: 'Inter var', sans-serif;
     }
-}
-
-.app {
-    @apply relative w-full h-screen overflow-hidden;
 }
 
 .home {
@@ -48,9 +44,7 @@ html {
 }
 
 .filtertabs-floater {
-    @apply absolute glassmorphism p-3 rounded-md opacity-0 transition-all;
-    visibility: hidden;
-    bottom: 120%;
+    @apply absolute glassmorphism p-3 rounded-md opacity-0 transition-all bottom-[120%] invisible;
 }
 
 .floater-container:hover .filtertabs-floater {
@@ -58,7 +52,7 @@ html {
 }
 
 .aipicker-textarea {
-    @apply w-full bg-transparent text-sm border border-gray-300 p-2 outline-none flex-1;
+    @apply bg-transparent text-sm border border-[#ededed] rounded-md p-2 outline-none flex-1 resize-none;
 }
 
 .filepicker-container {
@@ -85,19 +79,25 @@ html {
 }
 
 input[type='file'] {
-    z-index: -1;
-    position: absolute;
-    opacity: 0;
+    @apply z-[-1] absolute opacity-0;
+}
+
+input[type='range'] {
+    @apply glassmorphism rounded-md h-2 appearance-none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    @apply border border-solid border-[#a9a9a9] h-[14px] w-5 rounded-md bg-[#d4d4d4] cursor-pointer appearance-none shadow-[1px_1px_1px_#a9a9a9];
 }
 
 .sketch-picker {
-    width: 170px !important;
+    @apply !w-[170px] glassmorphism;
+    /* width: 170px !important; */
     background: rgba(255, 255, 255, 0.25) !important;
     box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07) !important;
     backdrop-filter: blur(4px) !important;
     -webkit-backdrop-filter: blur(4px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.18) !important;
-    border-radius: 6px !important;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .sketch-picker > div:nth-child(3) {
