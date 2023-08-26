@@ -1,6 +1,10 @@
 import CustomButton from './CustomButton';
+import state from '../store';
+import { useSnapshot } from 'valtio';
 
 function FilePicker({ file, setFile, readFile }) {
+    const snap = useSnapshot(state);
+
     const buttons = [
         { type: 'outline', title: 'Logo' },
         { type: 'filled', title: 'Full' },
@@ -13,17 +17,27 @@ function FilePicker({ file, setFile, readFile }) {
                     type="file"
                     id="file-upload"
                     accept="image/*"
-                    onChange={(e) => setFile(e.target.files[0])}
+                    onChange={({ target }) => setFile(target.files[0])}
                 />
                 <label
                     htmlFor="file-upload"
-                    className="filepicker-input cursor-pointer underline "
+                    className="filepicker-input cursor-pointer border w-fit p-1 rounded "
+                    style={{ borderColor: snap.color }}
                 >
-                    Upload File
+                    {/* <img
+                        src={upload}
+                        alt="upload"
+                        className=" h-4 inline-block pr-1"
+                        style={{ fill: snap.color }}
+                    /> */}
+                    Upload Image
                 </label>
 
-                <p className="mt-2 text-white text-sm truncate">
-                    {!file ? 'No file selected' : file.name}
+                <p
+                    className="mt-2 text-white text-sm truncate"
+                    style={{ title: file.name }}
+                >
+                    {!file ? 'No image selected' : file.name}
                 </p>
 
                 <div className="mt-auto flex gap-3">

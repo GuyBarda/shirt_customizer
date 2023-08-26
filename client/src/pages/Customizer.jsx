@@ -109,9 +109,8 @@ const Customizer = () => {
     };
 
     const readFile = async (type) => {
-        if (!file) return alert('Please provide a file');
-        if (!file.type.includes('image'))
-            return alert('Please provide an image');
+        if (!file || !file.type.includes('image'))
+            return alert('Please upload an image file');
         const res = await reader(file);
         handleDecals(type, res);
         setActiveEditorTab('');
@@ -158,6 +157,17 @@ const Customizer = () => {
                             customStyles="w-fit px-4 py-2.5 font-bold text-sm"
                         />
                     </motion.div>
+                    {/* <motion.div
+                        className="absolute z-10 top-5 left-1/2 translate-x-[-50%]"
+                        {...fadeAnimation}
+                    >
+                        <CustomButton
+                            type="filled"
+                            title="Want to customize you own shoe?"
+                            handleClick={() => (state.intro = true)}
+                            customStyles="w-fit px-4 py-2.5 font-bold text-sm rounded-lg"
+                        />
+                    </motion.div> */}
 
                     <motion.div
                         className="filtertabs-container"

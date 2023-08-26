@@ -35,7 +35,7 @@ function Shirt() {
                 )}
                 {snap.isLogoTexture && (
                     <Decal
-                        position={[snap.positionX, snap.positionY, 0.1]}
+                        position={[snap.positionX, snap.positionY, 0.09]}
                         rotation={[0, 0, 0]}
                         scale={snap.size}
                         map={logoTexture}

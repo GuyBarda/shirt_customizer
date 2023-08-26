@@ -24,7 +24,7 @@ function SizePicker() {
                     onChange={({ target }) =>
                         handleChange('size', target.value)
                     }
-                    min="5"
+                    min="11"
                     max="25"
                     value={snap.size * 100}
                 />
